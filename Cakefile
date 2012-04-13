@@ -1,10 +1,11 @@
 ###
-NeatCakefile v0.1.1
+NeatCakefile v0.1.2
 
 A neat Cakefile optimised for typical tasks
 
 MIT License
 (c) 2012, Nikita Volkov. All rights reserved.
+
 http://github.com/nikita-volkov/NeatCakefile
 
 ###
@@ -60,11 +61,14 @@ executeAndOutput = (cmd, cb) ->
 
 ### File system helpers ###
 
-fileExists = (p) -> (try FS.statSync p)?.isFile() ? false
+fileExists = (p) -> 
+  (try FS.statSync p)?.isFile() ? false
 
-dirExists = (p) -> (try FS.statSync p)?.isDirectory() ? false
+dirExists = (p) -> 
+  (try FS.statSync p)?.isDirectory() ? false
 
-paths = (p) -> try p + "/" + sp for sp in FS.readdirSync p
+paths = (p) -> 
+  try p + "/" + sp for sp in FS.readdirSync p
 
 removePath = (path, cb) ->
   if dirExists path then removeDir path, cb
